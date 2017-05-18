@@ -79,7 +79,7 @@ def run_workflow(workflow_log_id):
             # deepcopy dict to prevent runtime error
             inp = deepcopy(workflow_log.inputs)
             # loop key, value pairs and look if this output needs to be set as input
-            for key, value in list(inp[str(current.id)]['string'].items()):
+            for key, value in inp[str(current.id)]['string'].items():
                 if value == 'output_%s' % str(workflow_task.id):
                     workflow_log.inputs[str(current.id)]['string'][key] = output['stdout']
 

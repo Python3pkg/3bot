@@ -227,7 +227,7 @@ def render_template(workflow_log, workflow_task, mask=False):
 
     if mask and 'password' in inputs:
         # replace sensitive data with '***'
-        for key, value in list(inputs['password'].items()):
+        for key, value in inputs['password'].items():
             inputs['password'][key] = '***'
 
     # Update reserved identifiers /keywords

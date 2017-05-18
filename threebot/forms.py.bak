@@ -139,7 +139,7 @@ class ParameterListSelectForm(forms.Form):
         # make a list of ::all_required_inputs, with name and data type
         all_required_inputs = []
         for wf_task in workflow_tasks:
-            for name, data_type in list(wf_task.task.required_inputs.items()):
+            for name, data_type in wf_task.task.required_inputs.items():
                 if name not in all_required_inputs:
                     all_required_inputs.append((name, data_type))
 
@@ -326,7 +326,7 @@ class TaskParameterForm(forms.Form):
         workflow_task = kwargs.pop('workflow_task')
         super(TaskParameterForm, self).__init__(*args, **kwargs)
 
-        for name, data_type in list(extra.items()):
+        for name, data_type in extra.items():
             possible_parameters = get_possible_parameters(request, workflow_task, data_type)
             preset_parameter = get_preset_param(request, workflow_task, name, data_type)
             self.fields['wt_task_%i.%s.%s' % (workflow_task.id, data_type, name)] = forms.ChoiceField(

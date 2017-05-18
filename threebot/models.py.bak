@@ -176,7 +176,7 @@ class Task(models.Model):
         if not inputs:
             return
 
-        for name, data_type in list(inputs.items()):
+        for name, data_type in inputs.items():
             field = 'template'
             if not any(data_type == el[0] for el in Parameter.DATA_TYPE_CHOICES):
                 msg = '"%s" is not a valid data type' % data_type
@@ -336,7 +336,7 @@ class WorkflowPreset(models.Model):
 
         for workflow_task in wf_tasks:
 
-            for param_name, param_data_type in list(workflow_task.task.required_inputs.items()):
+            for param_name, param_data_type in workflow_task.task.required_inputs.items():
                 wanted_key = '%s.%s' % (param_data_type, param_name)
 
                 if str(workflow_task.id) in self.defaults:

@@ -157,7 +157,7 @@ def detail_perf(request, slug, template='threebot/workflow/detail_perf.html'):
             for data_type in Parameter.DATA_TYPE_CHOICES:
                 form_dict[data_type[0]] = {}
 
-            for template_input, path_to_value in list(data.items()):  # TODO: better identifier
+            for template_input, path_to_value in data.items():  # TODO: better identifier
                 # template_input = "wt_task_1.email.recipient_email"
                 # path_to_value = "prompt.email.name@provider.com"
                 # path_to_value = "output.string.output_<WorkflowTask.id>"
